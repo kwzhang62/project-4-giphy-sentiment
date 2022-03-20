@@ -38,7 +38,7 @@ function App() {
       <header>
         <h1>Giphy App</h1>
         < Search userInput={userInput} searchResults={searchResults} updateSearchResults={updateSearchResults} handleUpdateUserInput={updateUserInput} />
-        < SearchResultsDisplay searchResults={searchResults} />
+        < SearchResultsDisplay userInput={userInput} searchResults={searchResults} />
       </header>
     </div>
   );
