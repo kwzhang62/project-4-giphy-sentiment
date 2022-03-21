@@ -11,6 +11,11 @@ import Search from './Search.js';
 
 import SearchResultsDisplay from './SearchResultsDisplay';
 
+import SavedGifsDisplay from './SavedGifsDisplay'
+
+import { getDatabase, ref, onValue, push, remove } from 'firebase/database';
+import firebase from './firebase';
+
 // 2) functions that will update the states in App.js
 
 // 3) Return statement - which renders userInput
@@ -18,7 +23,7 @@ import SearchResultsDisplay from './SearchResultsDisplay';
 function App() {
 
   // 4) Create out useStates for userInput and API data and firebase data
-
+ // *************this should contain the user's name, word and gif(url)****************
   const [userInput, setUserInput] = useState('');
 
   const updateUserInput = (input) => {
@@ -33,12 +38,53 @@ function App() {
     console.log(results)
   }
 
+  // saved-gifs-display **********************************************************************************
+  // userRecord will be a string contains the user's name, word and gif(url) 
+  const [ userRecord, setUserRecord ] = useState('')
+  
+
+  useEffect( () => {
+    const database = getDatabase(firebase)
+    const dbRef = ref(database)
+
+    onValue(dbRef, (response) => {
+      const newState = [];
+      const data = response.val();
+        for(let key in data) {
+          newState.push({key: key, name: data[key]});
+        }
+    })
+    setUserRecord(newState)
+  })
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const database = getDatabase(firebase);
+    const dbRef = ref(database);
+    push(dbRef, userInput); 
+    // this should contain the user's name, word and gif(url) 
+    setUserInput('');
+  }
+
+  const handleRemoval = (userRecordId) => {
+  const database = getDatabase(firebase);
+  const dbRef = ref(database, `/${userRecordId}`);
+  remove(dbRef)
+}
+  // **********************************************************************************
+
   return (
     <div className="App">
       <header>
         <h1>Giphy App</h1>
         < Search userInput={userInput} searchResults={searchResults} updateSearchResults={updateSearchResults} handleUpdateUserInput={updateUserInput} />
-        < SearchResultsDisplay userInput={userInput} searchResults={searchResults} />
+        < SearchResultsDisplay searchResults={searchResults} />
+
+
+        <Routes>
+          <Route path="/:userRecord" element={ <SavedGifsDisplay user={userRecord}/> } />
+        </Routes>
       </header>
     </div>
   );
