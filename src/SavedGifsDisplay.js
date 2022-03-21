@@ -16,12 +16,9 @@ function SavedGifsDisplay(props) {
         const dbRef = ref(database)
 
         onValue(dbRef, (response) => {
-            const newState = [];
-            const data = response.val();
-            for (let key in data) {
-                newState.push({ key: key, name: data[key] });
-            }
-            setSavedGifs(newState);
+            const newState = response.val();
+            // console.log(response.val());
+            setSavedGifs(newState.data);
         })
     }, [])
 
@@ -30,7 +27,7 @@ function SavedGifsDisplay(props) {
         <ul className="savedGifsDisplay"  >
 
             <li key={savedGifs.id}>
-                <p>{savedGifs[0].id}</p>
+                {/* <p>{savedGifs[0].id}</p> */}
                 {/* <p>User Name: {props.user.name}</p> */}
                 {/* <p>User's word: {props.user.word}</p>
                 <div>User's gif selection:
