@@ -23,7 +23,7 @@ import firebase from './firebase';
 function App() {
 
   // 4) Create out useStates for userInput and API data and firebase data
- // *************this should contain the user's name, word and gif(url)****************
+  // *************this should contain the user's name, word and gif(url)****************
   const [userInput, setUserInput] = useState('');
 
   const updateUserInput = (input) => {
@@ -32,59 +32,46 @@ function App() {
 
   // 5) Create a state to hold the data from the API 
 
-  const [searchResults, setSearchResults] = useState({});
+  const [searchResults, setSearchResults] = useState([]);
 
   const updateSearchResults = (results) => {
-    console.log(results)
+    console.log(results);
+    setSearchResults(results);
+    console.log(searchResults);
   }
 
   // saved-gifs-display **********************************************************************************
-  // userRecord will be a string contains the user's name, word and gif(url) 
-  const [ userRecord, setUserRecord ] = useState('')
-  
+  // userRecord will be a object with the properties url, date, search term, id and title 
 
-  useEffect( () => {
-    const database = getDatabase(firebase)
-    const dbRef = ref(database)
 
-    onValue(dbRef, (response) => {
-      const newState = [];
-      const data = response.val();
-        for(let key in data) {
-          newState.push({key: key, name: data[key]});
-        }
-    })
-    setUserRecord(newState)
-  })
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  //   const database = getDatabase(firebase);
+  //   const dbRef = ref(database);
+  //   push(dbRef, userInput);
+  //   // this should contain the user's name, word and gif(url) 
+  //   setUserInput('');
+  // }
 
-    const database = getDatabase(firebase);
-    const dbRef = ref(database);
-    push(dbRef, userInput); 
-    // this should contain the user's name, word and gif(url) 
-    setUserInput('');
-  }
-
-  const handleRemoval = (userRecordId) => {
-  const database = getDatabase(firebase);
-  const dbRef = ref(database, `/${userRecordId}`);
-  remove(dbRef)
-}
+  // const handleRemoval = (userRecordId) => {
+  //   const database = getDatabase(firebase);
+  //   const dbRef = ref(database, `/${userRecordId}`);
+  //   remove(dbRef)
+  // }
   // **********************************************************************************
 
   return (
     <div className="App">
       <header>
         <h1>Giphy App</h1>
-        < Search userInput={userInput} searchResults={searchResults} updateSearchResults={updateSearchResults} handleUpdateUserInput={updateUserInput} />
+        < Search userInput={userInput} searchResults={searchResults} handleUpdateSearchResults={updateSearchResults} handleUpdateUserInput={updateUserInput} />
         < SearchResultsDisplay searchResults={searchResults} />
+        < SavedGifsDisplay />
 
-
-        <Routes>
-          <Route path="/:userRecord" element={ <SavedGifsDisplay user={userRecord}/> } />
-        </Routes>
+        {/* <Routes>
+          <Route path="/:userRecord" element={<SavedGifsDisplay />} />
+        </Routes> */}
       </header>
     </div>
   );
