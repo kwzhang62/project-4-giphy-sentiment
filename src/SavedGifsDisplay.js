@@ -8,39 +8,41 @@ import firebase from './firebase';
 
 function SavedGifsDisplay(props) {
 
-    const [savedGifs, setSavedGifs] = useState([])
-
-
+    const [savedGifsObject, setSavedGifsObject ] = useState( {} )
+    
     useEffect(() => {
         const database = getDatabase(firebase)
         const dbRef = ref(database)
 
         onValue(dbRef, (response) => {
             const newState = response.val();
-            // console.log(response.val());
-            setSavedGifs(newState.data);
-        })
-    }, [])
 
+            setSavedGifsObject(newState)
+
+        })
+       
+    }, [])
+  
+  
 
     return (
-        <ul className="savedGifsDisplay"  >
-
-            <li key={savedGifs.id}>
-                {/* <p>{savedGifs[0].id}</p> */}
-                {/* <p>User Name: {props.user.name}</p> */}
-                {/* <p>User's word: {props.user.word}</p>
-                <div>User's gif selection:
-                    <img src={props.user.url} alt="" /> */}
-                {/* </div> */}
-            </li>
-        </ul >
+        <ul className="savedGifsDisplay"  >         
+            {
+  
+         }
+          
+           
+        
+           
+        </ul>
+            
+        
     )
 }
 
 
-
-
-
-
 export default SavedGifsDisplay;
+
+//   <li>data array: {savedGifsObject.data}</li>
+// <li>id: {savedGifsObject.id}</li>
+// <li>url: {savedGifsObject.url}</li>  

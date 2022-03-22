@@ -41,12 +41,14 @@ function Search(props) {
 
     }, [])
 
+
     const searchGifQuery = function (event) {
 
         // 10)  Prevent the default on the form AKA tell is to prevent its default behavior (refreshing the page once the user submits the form - or selects videos to search)
         event.preventDefault();
 
     }
+
 
     return (
 
