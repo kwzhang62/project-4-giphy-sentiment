@@ -41,6 +41,7 @@ function SearchResultsDisplay(props) {
         savedGifData.srcUrl = savedGif.srcUrl;
 
         //include information about the date and search term
+        console.log(searchQuery);
         savedGifData.searchTerm = searchQuery;
 
         //create a date object for the current date
@@ -63,7 +64,7 @@ function SearchResultsDisplay(props) {
 
     return (
         <section id='searchResults'>
-            <h2>{props.userInput} Gifs</h2>
+            <h2>{searchQuery} Gifs</h2>
             <div className="searchResultsGallery">
                 <ul>
                     {
