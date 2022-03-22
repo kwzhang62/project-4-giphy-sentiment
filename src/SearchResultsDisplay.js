@@ -7,12 +7,17 @@ function SearchResultsDisplay(props) {
     //initialize a state to hold the results from the search
     const [gifResults, setGifResults] = useState([]);
 
+    //initialize a state to hold the user search query
+    const [searchQuery, setSearchQuery] = useState("");
+
     //update gifResults when the searchResults change
     useEffect( () => {
-        //do some data handling with props.searchResults then put it into gifResults
+        //set searchQuery to the user input when they make a search
+        setSearchQuery(props.userInput)
 
+        //do some data handling with props.searchResults then put it into gifResults
         const gifData = [];
-        props.searchResults.forEach((result)=>{
+        props.searchResults.forEach((result) => {
             gifData.push(
                 {
                     id: result.id,
@@ -36,7 +41,7 @@ function SearchResultsDisplay(props) {
         savedGifData.srcUrl = savedGif.srcUrl;
 
         //include information about the date and search term
-        savedGifData.searchTerm = "";//props.userInput;
+        savedGifData.searchTerm = searchQuery;
 
         //create a date object for the current date
         const saveDate = new Date();
