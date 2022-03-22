@@ -17,7 +17,7 @@ function Search(props) {
 
     // 4) make a axios call to retrive API data to take in user search query //
 
-    useEffect(() => {
+    const handleClick = () => {
 
         axios({
             url: 'https://api.giphy.com/v1/gifs/search',
@@ -38,8 +38,7 @@ function Search(props) {
             // }
 
         })
-
-    }, [])
+    }
 
 
     const searchGifQuery = function (event) {
@@ -58,7 +57,7 @@ function Search(props) {
 
             <input type="text" placeholder="   Search for your Gifs here..." name="search" value={props.userInput} onChange={handleChange} />
 
-            <button>Search</button>
+            <button onClick={handleClick}>Search</button>
 
         </form>
 
