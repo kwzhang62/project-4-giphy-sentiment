@@ -1,7 +1,7 @@
 // 1) Top level imports - useState, useEffect, import ReactRouterDOM (also import browserRouter in index.js)
 import { useState, useEffect } from 'react';
 
-import { getDatabase, ref, onValue, push, remove } from 'firebase/database';
+import { getDatabase, ref, onValue } from 'firebase/database';
 
 import firebase from './firebase';
 
@@ -28,16 +28,13 @@ function SavedGifsDisplay(props) {
             {
                 savedGifsArray.map((entry) => {
                     return (
-                        <li>                          
+                        <li key={entry[1].id}>                      
                             <p>{entry[1].date.day}/{entry[1].date.month}/{entry[1].date.year}</p>   
-                            <p><strong>Gif Id: </strong>{entry[1].id}</p>
-                            <p><strong>Search Term: {entry[1].searchTerm}</strong></p>
+                            <p><strong>Search Term:</strong> {entry[1].searchTerm}</p>
                             <div className="savedGifDisplayImg">
-                                <img src={entry[1].srcUrl} alt={entry[1].altText} />
-                            
-                            </div>
+                                <img src={entry[1].srcUrl} alt={entry[1].altText} />                           
+                            </div>  
                         </li>
-                       
                     )
                 })
             }
