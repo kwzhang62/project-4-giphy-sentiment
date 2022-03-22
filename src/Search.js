@@ -4,10 +4,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function Search(props) {
-
-    // 1) initialize state to track the changing value of the user input on the search form //
-
-    const [searchValue, setSearchValue] = useState('');
+    console.log(props);
 
     // 2) Track the change event on the search form element 
 
@@ -15,8 +12,7 @@ function Search(props) {
 
         // 3) take the value of the user’s search query and save it in state //
 
-        setSearchValue(event.target.value);
-
+        props.handleUpdateUserInput(event);
     }
 
     // 4) make a axios call to retrive API data to take in user search query //
@@ -27,7 +23,7 @@ function Search(props) {
             url: 'https://api.giphy.com/v1/gifs/search',
             params: {
                 api_key: 'kv1PZUje6Yh0cj4AfwHkzGUyUUbW7WI7',
-                q: searchValue,
+                q: `${props.userInput}`,
                 limit: 20,
             }
         }).then((apiData) => {
@@ -55,10 +51,10 @@ function Search(props) {
     return (
 
         <form action="" onSubmit={(event) => {
-            searchGifQuery(event, searchValue)
-        }} value={searchValue}>
+            searchGifQuery(event)
+        }}>
 
-            <input type="text" placeholder="   Search for your Gifs here..." name="search" />
+            <input type="text" placeholder="   Search for your Gifs here..." name="search" value={props.userInput} onChange={handleChange} />
 
             <button>Search</button>
 
