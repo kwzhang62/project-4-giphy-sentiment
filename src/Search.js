@@ -4,6 +4,18 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function Search(props) {
+    console.log(props);
+
+    // 2) Track the change event on the search form element 
+
+    const handleChange = function (event) {
+
+        // 3) take the value of the user’s search query and save it in state //
+
+        props.handleUpdateUserInput(event);
+    }
+
+    // 4) make a axios call to retrive API data to take in user search query //
 
     useEffect(() => {
 
@@ -11,7 +23,7 @@ function Search(props) {
             url: 'https://api.giphy.com/v1/gifs/search',
             params: {
                 api_key: 'kv1PZUje6Yh0cj4AfwHkzGUyUUbW7WI7',
-                q: 'hamburgers',
+                q: `${props.userInput}`,
                 limit: 20,
             }
         }).then((apiData) => {
@@ -29,12 +41,35 @@ function Search(props) {
 
     }, [])
 
-    // console.log(props.searchResults);
+
+    const searchGifQuery = function (event) {
+
+        // 10)  Prevent the default on the form AKA tell is to prevent its default behavior (refreshing the page once the user submits the form - or selects videos to search)
+        event.preventDefault();
+
+    }
+
 
     return (
-        <p>  {`${props.searchResults[0]}`}</p>
-        // insert form here
-    );
+
+        <form action="" onSubmit={(event) => {
+            searchGifQuery(event)
+        }}>
+
+            <input type="text" placeholder="   Search for your Gifs here..." name="search" value={props.userInput} onChange={handleChange} />
+
+            <button>Search</button>
+
+        </form>
+
+    )
+
+    // console.log(props.searchResults);
+
+    // return (
+    //     <p>  {`${props.searchResults[0]}`}</p>
+    //     // insert form here
+    // );
 }
 
 export default Search;

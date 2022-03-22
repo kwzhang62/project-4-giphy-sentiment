@@ -22,7 +22,7 @@ import firebase from './firebase';
 
 function App() {
 
-  // 4) Create out useStates for userInput and API data and firebase data
+  // 4) Create our useStates for userInput and API data and firebase data
   // *************this should contain the user's name, word and gif(url)****************
   const [userInput, setUserInput] = useState('');
 

@@ -7,27 +7,56 @@ function SearchResultsDisplay(props) {
     //initialize a state to hold the results from the search
     const [gifResults, setGifResults] = useState([]);
 
+    //initialize a state to hold the user search query
+    const [searchQuery, setSearchQuery] = useState("");
+
     //update gifResults when the searchResults change
     useEffect( () => {
+        //set searchQuery to the user input when they make a search
+        setSearchQuery(props.userInput)
 
         //do some data handling with props.searchResults then put it into gifResults
+        const gifData = [];
+        props.searchResults.forEach((result) => {
+            gifData.push(
+                {
+                    id: result.id,
+                    altText: result.title,
+                    srcUrl: result.images.original.url
+                }
+            );
+        });
 
+        setGifResults(gifData);
     }, [props.searchResults])
 
     //saves the gif and date to the database when the Save Gif button is clicked
-    const handleSaveGif = (event) => {
-        //get data about the gif being saved
-        const savedGif = '';
-
-        //create a date object
-        const saveDate = new Date();
-
-        //create object holding both the gif data and the date data
+    const handleSaveGif = (savedGif) => {
+        //create object about the gif being saved
         const savedGifData = {};
 
-        //const to firebase
+        //get the data about the gif
+        savedGifData.id = savedGif.id;
+        savedGifData.altText = savedGif.altText;
+        savedGifData.srcUrl = savedGif.srcUrl;
+
+        //include information about the date and search term
+        savedGifData.searchTerm = searchQuery;
+
+        //create a date object for the current date
+        const saveDate = new Date();
+        //create a date object within the savedGifData object to save to the database
+        savedGifData.date = {};
+        //save the day of the month to the date object
+        savedGifData.date.day = saveDate.getDate();
+        //save the month to the date object (0 - 11)
+        savedGifData.date.month = saveDate.getMonth();
+        //save the year to the date object
+        savedGifData.date.year = saveDate.getFullYear();
+
+        //update the database
         const database = getDatabase(firebase);
-        const dbRef = ref(database);
+        const dbRef = ref(database, `/data`);
 
         push(dbRef, savedGifData);
     }
@@ -40,9 +69,9 @@ function SearchResultsDisplay(props) {
                     {
                         gifResults.map( (gif)=> {
                             return (
-                                <li>
-                                    <img src="" alt="" />
-                                    <button onClick={handleSaveGif}>Save Gif</button>
+                                <li key={gif.id}>
+                                    <img src={`${gif.srcUrl}`} alt={`${gif.altText}`} />
+                                    <button onClick={()=>{handleSaveGif(gif)}}>Save Gif</button>
                                 </li>
                             )
                         })
