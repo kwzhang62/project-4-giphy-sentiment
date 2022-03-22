@@ -35,31 +35,11 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
 
   const updateSearchResults = (results) => {
-    console.log(results);
+    // console.log(results);
     setSearchResults(results);
-    console.log(searchResults);
+    // console.log(searchResults);
   }
 
-  // saved-gifs-display **********************************************************************************
-  // userRecord will be a object with the properties url, date, search term, id and title 
-
-
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-
-  //   const database = getDatabase(firebase);
-  //   const dbRef = ref(database);
-  //   push(dbRef, userInput);
-  //   // this should contain the user's name, word and gif(url) 
-  //   setUserInput('');
-  // }
-
-  // const handleRemoval = (userRecordId) => {
-  //   const database = getDatabase(firebase);
-  //   const dbRef = ref(database, `/${userRecordId}`);
-  //   remove(dbRef)
-  // }
-  // **********************************************************************************
 
   return (
     <div className="App">
@@ -69,9 +49,9 @@ function App() {
         < SearchResultsDisplay searchResults={searchResults} />
         < SavedGifsDisplay />
 
-        {/* <Routes>
+        <Routes>
           <Route path="/:userRecord" element={<SavedGifsDisplay />} />
-        </Routes> */}
+        </Routes> 
       </header>
     </div>
   );

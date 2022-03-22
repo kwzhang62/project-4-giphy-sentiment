@@ -29,7 +29,7 @@ function Search(props) {
 
     }, [])
 
-    console.log(props.searchResults);
+    // console.log(props.searchResults);
 
     return (
         <p>  {`${props.searchResults[0]}`}</p>
