@@ -18,7 +18,7 @@ function Search(props) {
     );
 
     const validateInput = (input) => {
-        if (input === "") {
+        if (input === "" || input.includes(" ")) {
             return false;
         }
         else
@@ -40,27 +40,27 @@ function Search(props) {
 
         if (validateInput(props.userInput)) {
 
-            axios({
-                url: 'https://api.giphy.com/v1/gifs/search',
-                params: {
-                    api_key: 'kv1PZUje6Yh0cj4AfwHkzGUyUUbW7WI7',
-                    q: `${props.userInput}`,
-                    limit: 20,
-                }
-            }).then((apiData) => {
-
-                // Need title, id, and url data back 
-                props.handleUpdateSearchResults(apiData.data.data);
-
-            })
-        } else {
-            setErrorState({
-                hasError: true,
-                errorMessage: "Please enter a search term",
-                errorSource: "userInput"
+            try {
+                axios({
+                    url: 'https://api.giphy.com/v1/gifs/search',
+                    params: {
+                        api_key: 'kv1PZUje6Yh0cj4AfwHkzGUyUUbW7WI7',
+                        q: `${props.userInput}`,
+                        limit: 20,
+                    }
+                }).then((apiData) => {
+                    // Need title, id, and url data back
+                    props.handleUpdateSearchResults(apiData.data.data);
+                })
+            } catch (error) {
+                setErrorState(
+                    {
+                        //properties
+                    }
+                )
             }
-            )
         }
+
 
         // 10)  Prevent the default on the form AKA tell is to prevent its default behavior (refreshing the page once the user submits the form - or selects gifs to search)
         event.preventDefault();
