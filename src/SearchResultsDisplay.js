@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import firebase from './firebase';
 import { getDatabase, ref, push } from 'firebase/database';
+import ErrorHandling from './ErrorHandling';
 
 function SearchResultsDisplay(props) {
     
@@ -9,6 +10,14 @@ function SearchResultsDisplay(props) {
 
     //initialize a state to hold the user search query
     const [searchQuery, setSearchQuery] = useState("");
+
+    //initialize a state to track errors
+    const [errorState, setErrorState] = useState(
+        {
+            hasError: false,
+            errorMessage: ""
+        }
+    );
 
     //update gifResults when the searchResults change
     useEffect( () => {
@@ -41,30 +50,58 @@ function SearchResultsDisplay(props) {
         savedGifData.srcUrl = savedGif.srcUrl;
 
         //include information about the date and search term
-        console.log(searchQuery);
         savedGifData.searchTerm = searchQuery;
 
-        //create a date object for the current date
-        const saveDate = new Date();
-        //create a date object within the savedGifData object to save to the database
-        savedGifData.date = {};
-        //save the day of the month to the date object
-        savedGifData.date.day = saveDate.getDate();
-        //save the month to the date object (0 - 11)
-        savedGifData.date.month = saveDate.getMonth();
-        //save the year to the date object
-        savedGifData.date.year = saveDate.getFullYear();
+        //create an object within the savedGifData object with information about the date when the gif is saved
+        savedGifData.date = getCurrentDate();
 
         //update the database
-        const database = getDatabase(firebase);
-        const dbRef = ref(database, `/data`);
+        updateDatabase(savedGifData);
+    }
 
-        push(dbRef, savedGifData);
+    //returns an object with information about the current date
+    const getCurrentDate = () => {
+        //create an object to hold the day, month, and year for the current date
+        const currentDate = {}
+        //create a Date object
+        const date = new Date();
+
+        //save the day of the month to currentDate
+        currentDate.day = date.getDate();
+        //save the month to currentDate (0 - 11)
+        currentDate.month = date.getMonth();
+        //save the year to currentDate
+        currentDate.year = date.getFullYear();
+
+        return currentDate;
+    }
+
+    // connects to firebase and pushes an object containing information about the saved gif
+    const updateDatabase = (data) => {
+        try {
+            const database = getDatabase(firebase);
+            const dbRef = ref(database, `/data`);
+    
+            push(dbRef, data);
+            
+        } catch (error) {
+            //update the errorState state when an error has been caught
+            setErrorState(
+                {
+                    hasError: true,
+                    errorMessage: error
+                }
+            );
+        }
     }
 
     return (
         <section id='searchResults'>
             <h2>{searchQuery} Gifs</h2>
+            {
+                //send any errors that occur to the error handling component
+                errorState.hasError ? <ErrorHandling error={errorState.errorMessage}/> : null
+            }
             <div className="searchResultsGallery">
                 <ul>
                     {
