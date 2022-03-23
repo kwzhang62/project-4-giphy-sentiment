@@ -13,6 +13,9 @@ import SearchResultsDisplay from './SearchResultsDisplay';
 
 import SavedGifsDisplay from './SavedGifsDisplay'
 
+//import error handling compont 
+import ErrorHandling from './ErrorHandling';
+
 import { getDatabase, ref, onValue, push, remove } from 'firebase/database';
 import firebase from './firebase';
 
@@ -46,12 +49,12 @@ function App() {
       <header>
         <h1>Giphy App</h1>
         < Search userInput={userInput} searchResults={searchResults} handleUpdateSearchResults={updateSearchResults} handleUpdateUserInput={updateUserInput} />
+        < ErrorHandling userInput={userInput} searchResults={searchResults} />
         < SearchResultsDisplay userInput={userInput} searchResults={searchResults} />
         < SavedGifsDisplay />
-
         <Routes>
           <Route path="/:userRecord" element={<SavedGifsDisplay />} />
-        </Routes> 
+        </Routes>
       </header>
     </div>
   );
