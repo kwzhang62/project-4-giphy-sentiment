@@ -40,16 +40,33 @@ function App() {
     // console.log(searchResults);
   }
 
+ 
+
 
   return (
     <div className="App">
       <header>
-        <h1>Giphy App</h1>
-        < Search userInput={userInput} searchResults={searchResults} handleUpdateSearchResults={updateSearchResults} handleUpdateUserInput={updateUserInput} />
-        < SearchResultsDisplay userInput={userInput} searchResults={searchResults} />
-        < SavedGifsDisplay />
-        <Routes>
-          <Route path="/:userRecord" element={<SavedGifsDisplay />} />
+        <nav>
+          <ul>
+            <li>
+              <Link to="/home">Home</Link>
+            </li>
+            <li>
+              <Link to="/savedGifsDisplay">Display Saved Gifs</Link>
+            </li>
+          </ul>
+        </nav>
+        <h1>Giphy App</h1> 
+        <Routes> 
+          <Route path="/home" 
+            element={
+              <div>
+                <Search userInput={userInput} searchResults={searchResults} handleUpdateSearchResults={updateSearchResults} handleUpdateUserInput={updateUserInput} /> 
+                <SearchResultsDisplay userInput={userInput} searchResults={searchResults} /> 
+              </div>
+            } 
+          />
+          <Route path="/savedGifsDisplay" element={<SavedGifsDisplay />} />
         </Routes>
       </header>
     </div>
@@ -57,3 +74,4 @@ function App() {
 }
 
 export default App;
+// < SavedGifsDisplay />

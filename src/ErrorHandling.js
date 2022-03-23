@@ -16,17 +16,8 @@ function ErrorHandling(props) {
     }, [props.hasError])
 
     return (
-<<<<<<< HEAD
-        <div>
-            {
-                 props.userInput === null ?
-                props
-                :  <h2>Please enter a gify search</h2>
-            }    
-=======
         <div> {
             props.hasError ? <h2> {message} </h2> : null}
->>>>>>> main
         </div>
     )
 }
