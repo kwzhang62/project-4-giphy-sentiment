@@ -1,14 +1,14 @@
 // 1) Top level imports - useState, useEffect, import ReactRouterDOM (also import browserRouter in index.js)
 import { useState, useEffect } from 'react';
 
-import { getDatabase, ref, onValue, push, remove } from 'firebase/database';
+import { getDatabase, ref, onValue } from 'firebase/database';
 
 import firebase from './firebase';
 
 
 function SavedGifsDisplay(props) {
 
-    const [savedGifsObject, setSavedGifsObject ] = useState( {} )
+    const [savedGifsArray, setSavedGifsArray ] = useState([])
     
     useEffect(() => {
         const database = getDatabase(firebase)
@@ -16,33 +16,33 @@ function SavedGifsDisplay(props) {
 
         onValue(dbRef, (response) => {
             const newState = response.val();
-
-            setSavedGifsObject(newState)
-
+            const convertToArray = Object.entries(newState.data)
+            setSavedGifsArray(convertToArray)
         })
        
     }, [])
-  
-  
+
 
     return (
         <ul className="savedGifsDisplay"  >         
             {
-  
-         }
-          
-           
-        
-           
+                savedGifsArray.map((entry) => {
+                    return (
+                        <li key={entry[1].id}>                      
+                            <p>{entry[1].date.day}/{entry[1].date.month}/{entry[1].date.year}</p>   
+                            <p><strong>Search Term:</strong> {entry[1].searchTerm}</p>
+                            <div className="savedGifDisplayImg">
+                                <img src={entry[1].srcUrl} alt={entry[1].altText} />                           
+                            </div>  
+                        </li>
+                    )
+                })
+            }
         </ul>
             
         
     )
 }
 
-
 export default SavedGifsDisplay;
 
-//   <li>data array: {savedGifsObject.data}</li>
-// <li>id: {savedGifsObject.id}</li>
-// <li>url: {savedGifsObject.url}</li>  
