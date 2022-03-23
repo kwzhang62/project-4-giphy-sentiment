@@ -17,7 +17,10 @@ function Search(props) {
 
     // 4) make a axios call to retrive API data to take in user search query //
 
-    const handleClick = () => {
+    const searchGifQuery = function (event) {
+
+        // 10)  Prevent the default on the form AKA tell is to prevent its default behavior (refreshing the page once the user submits the form - or selects gifs to search)
+        event.preventDefault();
 
         axios({
             url: 'https://api.giphy.com/v1/gifs/search',
@@ -31,23 +34,9 @@ function Search(props) {
             // Need title, id, and url data back 
             props.handleUpdateSearchResults(apiData.data.data);
 
-
-            //     const handleInputChange = (event) => {
-            //         props.handleUpdateUserInput(event);
-            //     }
-            // }
-
         })
-    }
-
-
-    const searchGifQuery = function (event) {
-
-        // 10)  Prevent the default on the form AKA tell is to prevent its default behavior (refreshing the page once the user submits the form - or selects videos to search)
-        event.preventDefault();
 
     }
-
 
     return (
 
@@ -56,19 +45,12 @@ function Search(props) {
         }}>
 
             <input type="text" placeholder="   Search for your Gifs here..." name="search" value={props.userInput} onChange={handleChange} />
-
-            <button onClick={handleClick}>Search</button>
+            <button>Search</button>
 
         </form>
 
     )
 
-    // console.log(props.searchResults);
-
-    // return (
-    //     <p>  {`${props.searchResults[0]}`}</p>
-    //     // insert form here
-    // );
 }
 
 export default Search;
