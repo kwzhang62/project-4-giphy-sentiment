@@ -89,7 +89,8 @@ function SearchResultsDisplay(props) {
             setErrorState(
                 {
                     hasError: true,
-                    errorMessage: error
+                    errorMessage: error,
+                    errorSource: "firebase"
                 }
             );
         }
@@ -99,7 +100,7 @@ function SearchResultsDisplay(props) {
         <section id='searchResults'>
             <h2>{searchQuery} Gifs</h2>
             {
-                //send any errors that occur to the error handling component
+                //send any errors that occurs to the error handling component
                 errorState.hasError ? <ErrorHandling error={errorState.errorMessage}/> : null
             }
             <div className="searchResultsGallery">
