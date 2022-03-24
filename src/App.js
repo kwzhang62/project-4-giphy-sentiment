@@ -49,7 +49,7 @@ function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/home">Home</Link>
+              <Link to="/">Home</Link>
             </li>
             <li>
               <Link to="/savedGifsDisplay">Display Saved Gifs</Link>
@@ -58,7 +58,7 @@ function App() {
         </nav>
         <h1>Giphy App</h1> 
         <Routes> 
-          <Route path="/home" 
+          <Route path="" 
             element={
               <div>
                 <Search userInput={userInput} searchResults={searchResults} handleUpdateSearchResults={updateSearchResults} handleUpdateUserInput={updateUserInput} /> 
