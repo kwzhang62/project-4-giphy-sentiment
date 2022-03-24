@@ -18,7 +18,7 @@ function ErrorHandling(props) {
 
     return (
         <div className='errorMessage'> {
-            props.hasError ? <h2> {message} </h2> : null}
+            props.hasError ? <p> {message} </p> : null}
         </div>
     )
 }

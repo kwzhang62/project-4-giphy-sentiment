@@ -62,18 +62,19 @@ function Search(props) {
     }
 
     return (
-        <>
-            <form action="" onSubmit={(event) => {
-                searchGifQuery(event)
-            }}>
+        <section id="search">
+            <div className='searchFormContainer'>
+                <form className="searchForm" action="" onSubmit={(event) => {
+                    searchGifQuery(event)
+                }}>
 
-                <input type="text" placeholder="   Search for your Gifs here..." name="search" value={props.userInput} onChange={handleChange} />
-                <button>Search</button>
+                    <input type="text" placeholder="   Search for your Gifs here..." name="search" value={props.userInput} onChange={handleChange} />
+                    <button>Search</button>
 
-            </form>
-
+                </form>
+            </div>
             < ErrorHandling userInput={props.userInput} error={errorState.errorMessage} source={errorState.errorSource} hasError={errorState.hasError} />
-        </>
+        </section>
 
     )
 
