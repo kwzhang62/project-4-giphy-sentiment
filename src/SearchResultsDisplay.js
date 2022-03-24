@@ -106,7 +106,7 @@ function SearchResultsDisplay(props) {
             }
             {
                 //send any errors that occurs to the error handling component
-                errorState.hasError ? <ErrorHandling error={errorState.errorMessage}/> : null
+                errorState.hasError ? <ErrorHandling error={errorState.errorMessage} hasError={errorState.hasError} source={errorState.errorSource} /> : null
             }
             <div className="searchResultsGallery">
                 <ul>
