@@ -89,7 +89,8 @@ function SearchResultsDisplay(props) {
             setErrorState(
                 {
                     hasError: true,
-                    errorMessage: error
+                    errorMessage: error,
+                    errorSource: "firebase"
                 }
             );
         }
@@ -97,9 +98,14 @@ function SearchResultsDisplay(props) {
 
     return (
         <section id='searchResults'>
-            <h2>{searchQuery} Gifs</h2>
             {
-                //send any errors that occur to the error handling component
+                //show a subheading with the search term when it has a value
+                searchQuery === "" || searchQuery === null
+                ? null
+                :  <h2 className='searchResultsHeading'>{searchQuery} Gifs</h2>
+            }
+            {
+                //send any errors that occurs to the error handling component
                 errorState.hasError ? <ErrorHandling error={errorState.errorMessage}/> : null
             }
             <div className="searchResultsGallery">
