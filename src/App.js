@@ -44,7 +44,7 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className="wrapper">
       <header>
         <nav>
           <ul>
@@ -56,9 +56,10 @@ function App() {
             </li>
           </ul>
         </nav>
-        <h1>Giphy App</h1> 
-        <Routes> 
-          <Route path="" 
+        <h1>Giphy Sentiment</h1> 
+      </header>
+      <Routes> 
+          <Route path="/" 
             element={
               <div>
                 <Search userInput={userInput} searchResults={searchResults} handleUpdateSearchResults={updateSearchResults} handleUpdateUserInput={updateUserInput} /> 
@@ -68,7 +69,6 @@ function App() {
           />
           <Route path="/savedGifsDisplay" element={<SavedGifsDisplay />} />
         </Routes>
-      </header>
     </div>
   );
 }
