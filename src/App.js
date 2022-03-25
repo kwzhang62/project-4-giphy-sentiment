@@ -69,9 +69,11 @@ function App() {
           />
           <Route path="/savedGifsDisplay" element={<SavedGifsDisplay />} />
         </Routes>
+        <footer>
+        <p>Created at Juno College of Technology</p>
+      <p>by Daniel McIntyre, Kevin Zhang and David Benitez</p></footer>
     </div>
   );
 }
 
 export default App;
-// < SavedGifsDisplay />
