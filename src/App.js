@@ -50,6 +50,7 @@ function App() {
       <header>
         < NavBar />
       </header>
+
       <Routes>
         <Route path="/"
           element={
@@ -61,9 +62,24 @@ function App() {
         />
         <Route path="/savedGifsDisplay" element={<SavedGifsDisplay />} />
       </Routes>
+
+      <Routes> 
+          <Route path="/" 
+            element={
+              <div>
+                <Search userInput={userInput} searchResults={searchResults} handleUpdateSearchResults={updateSearchResults} handleUpdateUserInput={updateUserInput} /> 
+                <SearchResultsDisplay userInput={userInput} searchResults={searchResults} /> 
+              </div>
+            } 
+          />
+          <Route path="/savedGifsDisplay" element={<SavedGifsDisplay />} />
+        </Routes>
+        <footer>
+        <p>Created at Juno College of Technology</p>
+      <p>by Daniel McIntyre, Kevin Zhang and David Benitez</p></footer>
+
     </div>
   );
 }
 
 export default App;
-// < SavedGifsDisplay />
