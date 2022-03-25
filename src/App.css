@@ -36,13 +36,84 @@ ul {
 }
 
 
-/*savedGifsDisplay  ******************************************* */
-
 .savedGifsDisplay {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   text-align: center;
+}
+
+
+.nav-bar-nav {
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(90deg, rgb(230, 70, 182), rgb(255, 102, 102));
+}
+
+.nav-bar-nav ul {
+  display: flex;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;
+  margin-right: 50px;
+  font-size: 18px;
+}
+
+.nav-bar-nav li {
+  list-style: none;
+  padding: 20px;
+  padding-top: 40px;
+}
+
+.nav-bar-nav h1 {
+  padding-top: 15px;
+  font-size: 25px;
+  margin-left: -80%;
+  font-family: 'Dela Gothic One', cursive;
+  color: white;
+}
+
+.nav-bar-nav a {
+  text-decoration: none;
+  color: white;
+}
+
+.nav-bar-nav iframe {
+  margin-left: 50px;
+}
+
+.searchForm input {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  margin-bottom: 100px;
+}
+
+.searchForm button {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: linear-gradient(90deg, rgb(230, 70, 182), rgb(255, 102, 102));
+}
+
+.searchFormContainer h2 {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;
+  margin-top: 100px;
+  padding-bottom: 20px;
+}
+
+.searchResultsGallery {
+  display: flex;
+}
+
+.searchResultsGallery img {
+  width: 100%;
+}
+
+.home-search-results {
+  text-align: center;
+  padding-top: 50px;
 }
 
 .userEntry {
@@ -54,7 +125,7 @@ ul {
 .dateAndTerm {
   color: white;
   border: 1px solid #3191ff;
-  background-image: linear-gradient(45deg, rgb(153, 51, 255) 0%, rgb(255, 102, 102) 50%, rgb(0, 255, 153) 100%);
+  background-image: linear-gradient(45deg, rgb(153, 51, 255) 0%, rgb(255, 102, 102) 50%, rgb(0, 145, 255) 100%);
   padding: 5px;
 }
 
@@ -77,9 +148,6 @@ footer {
   padding: 25px 0;
 }
 
-/*savedGifsDisplay Media Queries ******************************************* */
-
-
 @media (max-width: 870px) {
 
   .savedGifsDisplay {
@@ -94,3 +162,4 @@ footer {
     margin-bottom: 50px;
   }
 }
+
