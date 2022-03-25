@@ -61,18 +61,20 @@ ul {
 .nav-bar-nav li {
   list-style: none;
   padding: 20px;
+  padding-top: 40px;
 }
 
 .nav-bar-nav h1 {
-  padding-top: 5px;
+  padding-top: 15px;
   font-size: 25px;
-  margin-left: -85%;
+  margin-left: -80%;
   font-family: 'Dela Gothic One', cursive;
+  color: white;
 }
 
 .nav-bar-nav a {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 .nav-bar-nav iframe {
@@ -83,6 +85,7 @@ ul {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
+  margin-bottom: 100px;
 }
 
 .searchForm button {
@@ -95,7 +98,8 @@ ul {
 .searchFormContainer h2 {
   font-family: 'Ubuntu', sans-serif;
   font-weight: 700;
-  margin-top: -30px;
+  margin-top: 100px;
+  padding-bottom: 20px;
 }
 
 .home-search-results {

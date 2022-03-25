@@ -69,7 +69,7 @@ function Search(props) {
                     searchGifQuery(event)
                 }}>
 
-                    <input type="text" placeholder="Search for your Gifs here..." name="search" value={props.userInput} onChange={handleChange} />
+                    <input type="text" placeholder="Search for your Gifs" name="search" value={props.userInput} onChange={handleChange} />
                     <button><i class="fas fa-search"></i></button>
 
                 </form>
