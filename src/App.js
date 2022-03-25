@@ -1,15 +1,13 @@
 import './App.css';
 
 // 1) Top level imports - useState, useEffect, import ReactRouterDOM (also import browserRouter in index.js)
-import { useState, useEffect } from 'react';
-import { Link, Routes, Route, Outlet, useParams } from 'react-router-dom';
+import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 
 // import our components
 import Search from './Search.js';
 import SearchResultsDisplay from './SearchResultsDisplay';
-
 import SavedGifsDisplay from './SavedGifsDisplay';
-
 import NavBar from './NavBar';
 
 // 2) functions that will update the states in App.js
@@ -51,8 +49,8 @@ function App() {
 
       <footer>
         <p>Created at Juno College of Technology</p>
-        <p>by Daniel McIntyre, Kevin Zhang and David Benitez</p></footer>
-
+        <p>by Daniel McIntyre, Kevin Zhang and David Benitez</p>
+      </footer>
     </div>
   );
 }
