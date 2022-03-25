@@ -6,6 +6,8 @@ import axios from 'axios';
 import ErrorHandling from './ErrorHandling';
 
 function Search(props) {
+    //create state to track 
+
     // 1) create states for error handling 
     const [errorState, setErrorState] = useState(
         {
@@ -61,16 +63,19 @@ function Search(props) {
         }
     }
 
+    useEffect( () => {
+
+    }, [props.searchResults])
+
     return (
         <section id="search">
             <div className='searchFormContainer'>
                 <form className="searchForm" action="" onSubmit={(event) => {
                     searchGifQuery(event)
                 }}>
-
-                    <input type="text" placeholder="Search for your Gifs here..." name="search" value={props.userInput} onChange={handleChange} />
+                    <label htmlFor="search"></label>
+                    <input type="text" placeholder="Search for your Gifs here..." name="search" id="search" value={props.userInput} onChange={handleChange} />
                     <button>Search</button>
-
                 </form>
             </div>
             < ErrorHandling userInput={props.userInput} error={errorState.errorMessage} source={errorState.errorSource} hasError={errorState.hasError} />
