@@ -36,7 +36,7 @@ function Search(props) {
     const searchGifQuery = function (event) {
         // 10)  Prevent the default on the form AKA tell is to prevent its default behavior (refreshing the page once the user submits the form - or selects gifs to search)
         event.preventDefault();
-
+        console.log("form submission is working")
         // validate the user input, then try to make an api call while catching any errors
         if (validateInput(props.userInput)) {
             try {
@@ -60,6 +60,14 @@ function Search(props) {
                     }
                 )
             }
+        } else {
+            setErrorState(
+                {
+                    hasError: true,
+                    errorMessage: "Please enter a single search term",
+                    errorSource: "userInput"
+                }
+            )
         }
     }
 
@@ -76,7 +84,7 @@ function Search(props) {
                 }}>
 
                     <input type="text" placeholder="Search for your Gifs" name="search" value={props.userInput} onChange={handleChange} />
-                    <button><i class="fas fa-search"></i></button>
+                    <button><i className="fas fa-search"></i></button>
 
                 </form>
             </div>
