@@ -40,7 +40,7 @@ function App() {
     // console.log(searchResults);
   }
 
- 
+
 
 
   return (
@@ -56,15 +56,15 @@ function App() {
             </li>
           </ul>
         </nav>
-        <h1>Giphy App</h1> 
-        <Routes> 
-          <Route path="/home" 
+        <h1>Giphy App</h1>
+        <Routes>
+          <Route path="/home"
             element={
               <div>
-                <Search userInput={userInput} searchResults={searchResults} handleUpdateSearchResults={updateSearchResults} handleUpdateUserInput={updateUserInput} /> 
-                <SearchResultsDisplay userInput={userInput} searchResults={searchResults} /> 
+                <Search userInput={userInput} searchResults={searchResults} handleUpdateSearchResults={updateSearchResults} handleUpdateUserInput={updateUserInput} />
+                <SearchResultsDisplay userInput={userInput} searchResults={searchResults} />
               </div>
-            } 
+            }
           />
           <Route path="/savedGifsDisplay" element={<SavedGifsDisplay />} />
         </Routes>
