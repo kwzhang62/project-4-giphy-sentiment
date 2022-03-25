@@ -4,7 +4,7 @@ import { getDatabase, ref, push } from 'firebase/database';
 import ErrorHandling from './ErrorHandling';
 
 function SearchResultsDisplay(props) {
-    
+
     //initialize a state to hold the results from the search
     const [gifResults, setGifResults] = useState([]);
 
@@ -20,7 +20,7 @@ function SearchResultsDisplay(props) {
     );
 
     //update gifResults when the searchResults change
-    useEffect( () => {
+    useEffect(() => {
         //set searchQuery to the user input when they make a search
         setSearchQuery(props.userInput)
 
@@ -81,9 +81,9 @@ function SearchResultsDisplay(props) {
         try {
             const database = getDatabase(firebase);
             const dbRef = ref(database, `/data`);
-    
+
             push(dbRef, data);
-            
+
         } catch (error) {
             //update the errorState state when an error has been caught
             setErrorState(
@@ -101,21 +101,21 @@ function SearchResultsDisplay(props) {
             {
                 //show a subheading with the search term when it has a value
                 searchQuery === "" || searchQuery === null
-                ? null
-                :  <h2 className='searchResultsHeading'>{searchQuery} Gifs</h2>
+                    ? null
+                    : <h2 className='searchResultsHeading'>{searchQuery} Gifs</h2>
             }
             {
                 //send any errors that occurs to the error handling component
                 errorState.hasError ? <ErrorHandling error={errorState.errorMessage} hasError={errorState.hasError} source={errorState.errorSource} /> : null
             }
             <div className="searchResultsGallery">
-                <ul>
+                <ul className='search-results-gifs'>
                     {
-                        gifResults.map( (gif)=> {
+                        gifResults.map((gif) => {
                             return (
                                 <li key={gif.id}>
                                     <img src={`${gif.srcUrl}`} alt={`${gif.altText}`} />
-                                    <button onClick={()=>{handleSaveGif(gif)}}>Save Gif</button>
+                                    <button onClick={() => { handleSaveGif(gif) }}>Save Gif</button>
                                 </li>
                             )
                         })
