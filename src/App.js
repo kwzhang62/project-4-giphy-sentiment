@@ -7,7 +7,10 @@ import { Link, Routes, Route, Outlet, useParams } from 'react-router-dom';
 // import our components
 import Search from './Search.js';
 import SearchResultsDisplay from './SearchResultsDisplay';
-import SavedGifsDisplay from './SavedGifsDisplay'
+
+import SavedGifsDisplay from './SavedGifsDisplay';
+
+import NavBar from './NavBar';
 
 // 2) functions that will update the states in App.js
 function App() {
@@ -31,29 +34,25 @@ function App() {
   return (
     <div className="wrapper">
       <header>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/savedGifsDisplay">Display Saved Gifs</Link>
-            </li>
-          </ul>
-        </nav>
-        <h1>Giphy Sentiment</h1> 
+        < NavBar />
       </header>
-      <Routes> 
-          <Route path="/" 
-            element={
-              <div>
-                <Search userInput={userInput} searchResults={searchResults} handleUpdateSearchResults={updateSearchResults} handleUpdateUserInput={updateUserInput} /> 
-                <SearchResultsDisplay userInput={userInput} searchResults={searchResults} /> 
-              </div>
-            } 
-          />
-          <Route path="/savedGifsDisplay" element={<SavedGifsDisplay />} />
-        </Routes>
+
+      <Routes>
+        <Route path="/"
+          element={
+            <div className='home-search-results'>
+              <Search userInput={userInput} searchResults={searchResults} handleUpdateSearchResults={updateSearchResults} handleUpdateUserInput={updateUserInput} />
+              <SearchResultsDisplay userInput={userInput} searchResults={searchResults} />
+            </div>
+          }
+        />
+        <Route path="/savedGifsDisplay" element={<SavedGifsDisplay />} />
+      </Routes>
+
+      <footer>
+        <p>Created at Juno College of Technology</p>
+        <p>by Daniel McIntyre, Kevin Zhang and David Benitez</p></footer>
+
     </div>
   );
 }
