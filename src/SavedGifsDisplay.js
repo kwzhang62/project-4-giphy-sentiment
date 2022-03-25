@@ -28,9 +28,11 @@ function SavedGifsDisplay(props) {
             {
                 savedGifsArray.map((entry) => {
                     return (
-                        <li key={entry[1].id}>                      
-                            <p>{entry[1].date.day}/{entry[1].date.month}/{entry[1].date.year}</p>   
-                            <p><strong>Search Term:</strong> {entry[1].searchTerm}</p>
+                        <li className="userEntry" key={entry[1].id}> 
+                            <div className="dateAndTerm">                    
+                                <p>{entry[1].date.day}/{entry[1].date.month}/{entry[1].date.year}</p>   
+                                <p><span>Search Term:</span> {entry[1].searchTerm}</p>
+                            </div>  
                             <div className="savedGifDisplayImg">
                                 <img src={entry[1].srcUrl} alt={entry[1].altText} />                           
                             </div>  
