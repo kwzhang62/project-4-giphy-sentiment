@@ -2,37 +2,62 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav-bar-nav {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  background: linear-gradient(90deg, rgb(230, 70, 182), rgb(255, 102, 102));
 }
 
-.App-link {
-  color: #61dafb;
+.nav-bar-nav ul {
+  display: flex;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;
+  margin-right: 50px;
+  font-size: 18px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-bar-nav li {
+  list-style: none;
+  padding: 20px;
 }
+
+.nav-bar-nav h1 {
+  padding-top: 5px;
+  font-size: 25px;
+  margin-left: -85%;
+  font-family: 'Dela Gothic One', cursive;
+}
+
+.nav-bar-nav a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav-bar-nav iframe {
+  margin-left: 50px;
+}
+
+.searchForm input {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+
+.searchForm button {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.searchFormContainer h2 {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;
+  margin-top: -30px;
+}
+
+.home-search-results {
+  text-align: center;
+  padding-top: 50px;
+}
+

@@ -64,12 +64,13 @@ function Search(props) {
     return (
         <section id="search">
             <div className='searchFormContainer'>
+                <h2>Search for some Gifs</h2>
                 <form className="searchForm" action="" onSubmit={(event) => {
                     searchGifQuery(event)
                 }}>
 
                     <input type="text" placeholder="Search for your Gifs here..." name="search" value={props.userInput} onChange={handleChange} />
-                    <button>Search</button>
+                    <button><i class="fas fa-search"></i></button>
 
                 </form>
             </div>
