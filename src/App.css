@@ -36,14 +36,73 @@ ul {
 }
 
 
-/*savedGifsDisplay  ******************************************* */
-
 .savedGifsDisplay {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   text-align: center;
 }
+
+
+.nav-bar-nav {
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(90deg, rgb(230, 70, 182), rgb(255, 102, 102));
+}
+
+.nav-bar-nav ul {
+  display: flex;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;
+  margin-right: 50px;
+  font-size: 18px;
+}
+
+.nav-bar-nav li {
+  list-style: none;
+  padding: 20px;
+}
+
+.nav-bar-nav h1 {
+  padding-top: 5px;
+  font-size: 25px;
+  margin-left: -85%;
+  font-family: 'Dela Gothic One', cursive;
+}
+
+.nav-bar-nav a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav-bar-nav iframe {
+  margin-left: 50px;
+}
+
+.searchForm input {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+
+.searchForm button {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.searchFormContainer h2 {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;
+  margin-top: -30px;
+}
+
+.home-search-results {
+  text-align: center;
+  padding-top: 50px;
+}
+
 
 .userEntry {
  
@@ -77,9 +136,6 @@ footer {
   padding: 25px 0;
 }
 
-/*savedGifsDisplay Media Queries ******************************************* */
-
-
 @media (max-width: 870px) {
 
   .savedGifsDisplay {
@@ -94,3 +150,4 @@ footer {
     margin-bottom: 50px;
   }
 }
+

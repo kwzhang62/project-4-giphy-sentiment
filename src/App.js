@@ -11,7 +11,9 @@ import Search from './Search.js';
 
 import SearchResultsDisplay from './SearchResultsDisplay';
 
-import SavedGifsDisplay from './SavedGifsDisplay'
+import SavedGifsDisplay from './SavedGifsDisplay';
+
+import NavBar from './NavBar';
 
 import { getDatabase, ref, onValue, push, remove } from 'firebase/database';
 import firebase from './firebase';
@@ -40,24 +42,27 @@ function App() {
     // console.log(searchResults);
   }
 
- 
+
 
 
   return (
     <div className="wrapper">
       <header>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/savedGifsDisplay">Display Saved Gifs</Link>
-            </li>
-          </ul>
-        </nav>
-        <h1>Giphy Sentiment</h1> 
+        < NavBar />
       </header>
+
+      <Routes>
+        <Route path="/"
+          element={
+            <div className='home-search-results'>
+              <Search userInput={userInput} searchResults={searchResults} handleUpdateSearchResults={updateSearchResults} handleUpdateUserInput={updateUserInput} />
+              <SearchResultsDisplay userInput={userInput} searchResults={searchResults} />
+            </div>
+          }
+        />
+        <Route path="/savedGifsDisplay" element={<SavedGifsDisplay />} />
+      </Routes>
+
       <Routes> 
           <Route path="/" 
             element={
@@ -72,6 +77,7 @@ function App() {
         <footer>
         <p>Created at Juno College of Technology</p>
       <p>by Daniel McIntyre, Kevin Zhang and David Benitez</p></footer>
+
     </div>
   );
 }
