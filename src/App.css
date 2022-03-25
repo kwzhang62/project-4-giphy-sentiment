@@ -93,6 +93,7 @@ ul {
   padding-bottom: 10px;
   padding-left: 10px;
   padding-right: 10px;
+  background: linear-gradient(90deg, rgb(230, 70, 182), rgb(255, 102, 102));
 }
 
 .searchFormContainer h2 {
@@ -102,11 +103,18 @@ ul {
   padding-bottom: 20px;
 }
 
+.searchResultsGallery {
+  display: flex;
+}
+
+.searchResultsGallery img {
+  width: 100%;
+}
+
 .home-search-results {
   text-align: center;
   padding-top: 50px;
 }
-
 
 .userEntry {
  
