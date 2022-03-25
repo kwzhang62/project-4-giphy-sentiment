@@ -35,7 +35,6 @@ ul {
   list-style: none;
 }
 
-
 .savedGifsDisplay {
   display: flex;
   flex-direction: row;
@@ -48,13 +47,13 @@ ul {
   display: flex;
   justify-content: space-between;
   background: linear-gradient(90deg, rgb(230, 70, 182), rgb(255, 102, 102));
+  position: relative;
 }
 
 .nav-bar-nav ul {
   display: flex;
   font-family: 'Ubuntu', sans-serif;
   font-weight: 700;
-  margin-right: 50px;
   font-size: 18px;
 }
 
@@ -67,9 +66,10 @@ ul {
 .nav-bar-nav h1 {
   padding-top: 15px;
   font-size: 25px;
-  margin-left: -80%;
   font-family: 'Dela Gothic One', cursive;
   color: white;
+  position: absolute;
+  padding-left: 180px;
 }
 
 .nav-bar-nav a {
@@ -108,8 +108,31 @@ ul {
 }
 
 .searchResultsGallery img {
-  width: 100%;
+  width: 350px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
+
+.search-results-gifs {
+  display: flex;
+  flex-wrap: wrap;
+   column-gap: 50px;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.search-results-gifs ul {
+  margin: 0 auto;
+}
+
+.search-results-gifs button {
+  background: linear-gradient(90deg, rgb(230, 70, 182), rgb(255, 102, 102));
+  color: white;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;
+  padding: 10px;
+}
+
 
 .home-search-results {
   text-align: center;
