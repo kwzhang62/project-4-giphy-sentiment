@@ -48,7 +48,7 @@ function App() {
       </Routes>
 
       <footer>
-        <p>Created at Juno College of Technology</p>
+        <p>Created at <a href="https://junocollege.com/" target="_blank" rel='noreferrer'>Juno College of Technology</a></p>
         <p>by Daniel McIntyre, Kevin Zhang and David Benitez</p>
       </footer>
     </div>
