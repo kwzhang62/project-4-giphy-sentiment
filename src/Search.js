@@ -96,13 +96,13 @@ function Search(props) {
         <section id="search">
             <div className='searchFormContainer'>
                 <h2>Search for some Gifs</h2>
+                <p>Find a gif that matches your mood! Enter a single search term:</p><br />
                 <form className="searchForm" action="" onSubmit={(event) => {
                     searchGifQuery(event)
                 }}>
 
                     <input type="text" placeholder="Search for your Gifs" name="search" value={props.userInput} onChange={handleChange} />
                     <button><i className="fas fa-search"></i></button>
-
                 </form>
             </div>
             {
